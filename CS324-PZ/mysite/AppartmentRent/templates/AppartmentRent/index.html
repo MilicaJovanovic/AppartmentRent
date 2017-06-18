@@ -1,0 +1,22 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'AppartmentRent/style.css' %}" />
+
+<div class="titleImg"></div>
+
+<h1 class="title">Pronađite idealan smeštaj za Vaš odmor</h1>
+
+{% if latest_appartment_list %}
+    <ul>
+    {% for appartment in latest_appartment_list %}
+        <!-- <li> -->
+        	<div class="appartment">
+        		<a href="{% url 'AppartmentRent:detail' appartment.id %}" class="appartName">{{ appartment.name }}</a>
+        		<p class="appartPlace">{{ appartment.location.place }}</p>
+        	</div>
+        <!-- </li> -->
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No appartments are available.</p>
+{% endif %}

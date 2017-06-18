@@ -1,0 +1,20 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'AppartmentRent/style.css' %}" />
+
+<div class="titleImg"></div>
+
+<h1 class="title">{{ appartment.name }}</h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+<p class="appartInfoLabel">Opis:</p>
+<p class="appartInfo">{{ appartment.description }}</p>
+<p class="appartInfoLabel">Mesto:</p>
+<p class="appartInfo">{{ appartment.location.place }}, {{ appartment.location.country }}</p>
+<p class="appartInfoLabel">Cena:</p>
+<p class="appartInfo"> € {{ appartment.price }} po danu/ noći</p>
+
+<a href="{% url 'AppartmentRent:reservation' appartment.id %}">
+	<input type="submit" value="REZERVIŠI" class="reserveBtn" />
+</a>
+
