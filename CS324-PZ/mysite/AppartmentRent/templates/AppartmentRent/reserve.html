@@ -3,5 +3,26 @@
 <link rel="stylesheet" type="text/css" href="{% static 'AppartmentRent/style.css' %}" />
 
 <div class="titleImg"></div>
-
 <h1 class="title">Rezervišite svoj smeštaj na vreme</h1>
+<form action="{% url 'AppartmentRent:success' appartment.id %}" method="POST">
+		{% csrf_token %}
+		<p class="appartInfoLabel">Ime i prezime: </p>
+		<input class="userInput" id="nameAndSurname" type="text" name="nameAndSurname">
+		<br>
+		<p class="appartInfoLabel">E-mail: </p>
+		<input class="userInput" id="email" type="email" name="email">
+		<br>
+		<p class="appartInfoLabel">Broj osoba: </p>
+		<input class="userInput" id="personNumber" type="number" name="personNumber" min="1" max="4">
+		<br>
+		<p class="appartInfoLabel">Datum polaska: </p>
+		<input class="userInput" id="startDate" type="date" name="startDate">
+		<br>
+		<p class="appartInfoLabel">Datum povratka: </p>
+		<input class="userInput" id="endDate" type="date" name="endDate">
+		<br>
+		<input type="submit" value="POTVRDI REZERVACIJU" class="submitReservationBtn">
+		<br>
+		<a href="{% url 'AppartmentRent:detail' appartment.id %}" class="backBtn">Nazad</a>
+		<br><br><br>
+	</form>

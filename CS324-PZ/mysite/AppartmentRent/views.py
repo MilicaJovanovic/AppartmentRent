@@ -25,20 +25,10 @@ class ReservationView(generic.DetailView):
     model = Appartment
     template_name = 'AppartmentRent/reserve.html'
 
-# def reserve(request, appartment_id):
-#     question = get_object_or_404(Question, pk=question_id)
-    # try:
-    #     selected_choice = question.choice_set.get(pk=request.POST['choice'])
-    # except (KeyError, Choice.DoesNotExist):
-    #     # Redisplay the question voting form.
-    #     return render(request, 'AppartmentRent/detail.html', {
-    #         'question': question,
-    #         'error_message': "You didn't select a choice.",
-    #     })
-    # else:
-    #     selected_choice.votes += 1
-    #     selected_choice.save()
-    #     # Always return an HttpResponseRedirect after successfully dealing
-    #     # with POST data. This prevents data from being posted twice if a
-    #     # user hits the Back button.
-    #     return HttpResponseRedirect(reverse('AppartmentRent:results', args=(question.id,)))
+class SuccessReservationView(generic.DetailView):
+    model = Appartment
+    template_name = 'AppartmentRent/successReservation.html'
+
+class ErrorReservationView(generic.DetailView):
+    model = Appartment
+    template_name = 'AppartmentRent/errorReservation.html'
