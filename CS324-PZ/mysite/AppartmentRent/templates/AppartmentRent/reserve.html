@@ -17,7 +17,7 @@
 </div>
 
 <h1 class="title">Rezervišite svoj smeštaj na vreme</h1>
-<form action="{% url 'AppartmentRent:error' %}" method="POST">
+<form action="{% url 'AppartmentRent:reserve' appartment.id %}" method="POST">
 	{% csrf_token %}
 	<p class="appartInfoLabel">Ime i prezime: </p>
 	<input class="userInput" id="nameAndSurname" type="text" name="nameAndSurname">

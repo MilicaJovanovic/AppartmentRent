@@ -37,3 +37,21 @@ class DestinationsView(generic.ListView):
 
     def get_queryset(self):
         return Location.objects.order_by('place')
+
+def reserve(request, appartmentId):
+    appartment = Appartment.objects.get(id = appartmentId)
+
+    if request.method == 'POST':
+        reservation = Reservation()
+        reservation.appartment = appartment
+        reservation.nameAndSurname = request.POST.get('nameAndSurname')
+        reservation.email = request.POST.get('email')
+        reservation.personNumber = int(request.POST.get('personNumber'))
+        reservation.start_date = request.POST.get('startDate')
+        reservation.end_date = request.POST.get('endDate')
+
+        if reservation.personNumber > 4:
+            return render(request, 'AppartmentRent/errorReservation.html', {})
+        else :  
+            reservation.save()
+            return render(request, 'AppartmentRent/successReservation.html', {})
