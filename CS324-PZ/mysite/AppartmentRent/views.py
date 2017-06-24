@@ -4,7 +4,7 @@ from django.urls import reverse
 from django.views import generic
 from django.utils import timezone
 
-from .models import Appartment, Reservation
+from .models import Appartment, Reservation, Location
 
 class IndexView(generic.ListView):
     template_name = 'AppartmentRent/index.html'
@@ -20,15 +20,20 @@ class DetailView(generic.DetailView):
     def get_queryset(self):
         return Appartment.objects
 
-
 class ReservationView(generic.DetailView):
     model = Appartment
     template_name = 'AppartmentRent/reserve.html'
 
-class SuccessReservationView(generic.DetailView):
-    model = Appartment
+class SuccessView(generic.ListView):
     template_name = 'AppartmentRent/successReservation.html'
 
-class ErrorReservationView(generic.DetailView):
-    model = Appartment
+class ErrorView(generic.ListView):
     template_name = 'AppartmentRent/errorReservation.html'
+
+class DestinationsView(generic.ListView):
+    model = Location
+    template_name = 'AppartmentRent/destinations.html'
+    context_object_name = 'latest_location_list'
+
+    def get_queryset(self):
+        return Location.objects.order_by('place')

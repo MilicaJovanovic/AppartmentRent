@@ -1,4 +1,17 @@
-{% block content %}
-	<h2>Uspešno ste izvršili rezervaciju smeštaja.</h2>
-	<a href="{% url 'AppartmentRent:index' %}" class="btn btn-default">Početna strana</a>
-{% endblock %}
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'AppartmentRent/style.css' %}" />
+
+<div class="titleImg"></div>
+
+<div class="menu">
+    <div class="menuItem">
+        <a href="{% url 'AppartmentRent:index' %}" class="appartName">Početna strana</a>
+    </div>    
+    <div class="menuItem">
+        <a href="{% url 'AppartmentRent:destinations' %}" class="appartName">Destinacije</a>
+    </div>    
+</div>
+
+<h1 class="title">Uspešno ste izvršili rezervaciju smeštaja.</h1>
+

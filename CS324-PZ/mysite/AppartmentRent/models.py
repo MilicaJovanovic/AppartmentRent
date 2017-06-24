@@ -4,8 +4,13 @@ from django.db import models
 from django.utils import timezone
 
 class Location(models.Model):
-    country = models.CharField(max_length=256)
-    place = models.CharField(max_length=256)
+    country = models.CharField(max_length=256, default="")
+    place = models.CharField(max_length=256, default="")
+    description = models.CharField(max_length=1024, default="")
+    photo = models.CharField(max_length=1024, default="")
+    distanceBg = models.CharField(max_length=256, default="")
+    distanceNis = models.CharField(max_length=256, default="")
+    distanceNs = models.CharField(max_length=256, default="")
     def __str__(self):
         return self.place
 

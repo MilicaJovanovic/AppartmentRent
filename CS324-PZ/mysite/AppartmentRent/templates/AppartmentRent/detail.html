@@ -4,6 +4,15 @@
 
 <div class="titleImg"></div>
 
+<div class="menu">
+    <div class="menuItem">
+        <a href="{% url 'AppartmentRent:index' %}" class="appartName">Početna strana</a>
+    </div>    
+    <div class="menuItem">
+        <a href="{% url 'AppartmentRent:destinations' %}" class="appartName">Destinacije</a>
+    </div>    
+</div>
+
 <h1 class="title">{{ appartment.name }}</h1>
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
@@ -17,6 +26,3 @@
 <a href="{% url 'AppartmentRent:reservation' appartment.id %}">
 	<input type="submit" value="REZERVIŠI" class="reserveBtn" />
 </a>
-<br>
-<a href="{% url 'AppartmentRent:index' %}" class="backBtn">Nazad</a>
-<br><br><br>

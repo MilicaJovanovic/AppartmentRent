@@ -4,17 +4,24 @@
 
 <div class="titleImg"></div>
 
+<div class="menu">
+    <div class="menuItem">
+        <a href="{% url 'AppartmentRent:index' %}" class="appartName">Početna strana</a>
+    </div>    
+    <div class="menuItem">
+        <a href="{% url 'AppartmentRent:destinations' %}" class="appartName">Destinacije</a>
+    </div>    
+</div>
+
 <h1 class="title">Pronađite idealan smeštaj za Vaš odmor</h1>
 
 {% if latest_appartment_list %}
     <ul>
     {% for appartment in latest_appartment_list %}
-        <!-- <li> -->
-        	<div class="appartment">
-        		<a href="{% url 'AppartmentRent:detail' appartment.id %}" class="appartName">{{ appartment.name }}</a>
-        		<p class="appartPlace">{{ appartment.location.place }}</p>
-        	</div>
-        <!-- </li> -->
+    	<div class="appartment">
+    		<a href="{% url 'AppartmentRent:detail' appartment.id %}" class="appartName">{{ appartment.name }}</a>
+    		<p class="appartPlace">{{ appartment.location.place }}</p>
+    	</div>
     {% endfor %}
     </ul>
 {% else %}
