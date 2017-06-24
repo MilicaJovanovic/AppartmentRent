@@ -1,0 +1,45 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'AppartmentRent/style.css' %}" />
+<title>MJ travel</title>
+
+<div class="titleImg"></div>
+
+<div class="menu">
+    <div class="menuItem">
+        <a href="{% url 'AppartmentRent:index' %}" class="appartName">Početna strana</a>
+    </div>    
+    <div class="menuItem">
+        <a href="{% url 'AppartmentRent:destinations' %}" class="appartName">Destinacije</a>
+    </div>   
+    <div class="menuItem">
+        <a href="{% url 'AppartmentRent:contact' %}" class="appartName">Kontakt</a>
+    </div>    
+</div>
+
+<h1 class="title">Kontaktirajte nas</h1>
+
+<div class="info">
+    <h2 class="contactInfoName">MJ travel</h2>
+    <p class="contactInfo">Niš</p>
+    <p class="contactInfo">Obrenovićeva 15</p>
+    <p class="contactInfo">018/4544950</p>
+    <p class="contactInfo">mjtravel@gmail.com</p>
+</div>
+
+<form action="{% url 'AppartmentRent:contactUs' %}" method="POST">
+    {% csrf_token %}
+    <p class="appartInfoLabel">Ime: </p>
+    <input class="userInput" id="name" type="text" name="name">
+    <br>
+    <p class="appartInfoLabel">E-mail: </p>
+    <input class="userInput" id="email" type="email" name="email">
+    <br>
+    <p class="appartInfoLabel">Naslov poruke: </p>
+    <input class="userInput" id="title" type="text" name="title">
+    <br>
+    <p class="appartInfoLabel">Tekst poruke: </p>
+    <textarea class="userArea" id="content" type="text" name="content"></textarea>
+    <br>
+    <input type="submit" value="POŠALJI" class="submitReservationBtn">
+</form>

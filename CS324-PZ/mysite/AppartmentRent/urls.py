@@ -11,4 +11,6 @@ urlpatterns = [
     url(r'^error/$', views.ErrorView.as_view(), name='error'),
     url(r'^destinations/$', views.DestinationsView.as_view(), name='destinations'),
     url(r'^reserve/(?P<appartmentId>\d+)/$', views.reserve, name='reserve'),
+    url(r'^contact/$', views.ContactView.as_view(), name='contact'),
+    url(r'^contactUs/$', views.contactUs, name='contactUs'),
 ]

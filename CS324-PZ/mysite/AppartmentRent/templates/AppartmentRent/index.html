@@ -1,6 +1,7 @@
 {% load static %}
 
 <link rel="stylesheet" type="text/css" href="{% static 'AppartmentRent/style.css' %}" />
+<title>MJ travel</title>
 
 <div class="titleImg"></div>
 
@@ -10,6 +11,9 @@
     </div>    
     <div class="menuItem">
         <a href="{% url 'AppartmentRent:destinations' %}" class="appartName">Destinacije</a>
+    </div>   
+    <div class="menuItem">
+        <a href="{% url 'AppartmentRent:contact' %}" class="appartName">Kontakt</a>
     </div>    
 </div>
 

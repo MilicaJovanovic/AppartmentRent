@@ -4,7 +4,7 @@ from django.urls import reverse
 from django.views import generic
 from django.utils import timezone
 
-from .models import Appartment, Reservation, Location
+from .models import Appartment, Reservation, Location, Contact
 
 class IndexView(generic.ListView):
     template_name = 'AppartmentRent/index.html'
@@ -38,6 +38,9 @@ class DestinationsView(generic.ListView):
     def get_queryset(self):
         return Location.objects.order_by('place')
 
+class ContactView(generic.TemplateView):
+    template_name = 'AppartmentRent/contact.html'
+
 def reserve(request, appartmentId):
     appartment = Appartment.objects.get(id = appartmentId)
 
@@ -50,8 +53,19 @@ def reserve(request, appartmentId):
         reservation.start_date = request.POST.get('startDate')
         reservation.end_date = request.POST.get('endDate')
 
-        if reservation.personNumber > 4:
-            return render(request, 'AppartmentRent/errorReservation.html', {})
-        else :  
+        if appartment.checkFreeRooms(1):
+            appartment.save(update_fields=['availableRooms'])
             reservation.save()
             return render(request, 'AppartmentRent/successReservation.html', {})
+        else :  
+            return render(request, 'AppartmentRent/errorReservation.html', {})
+
+def contactUs(request):
+    if request.method == 'POST':
+        contact = Contact()
+        contact.name = request.POST.get('name')
+        contact.email = request.POST.get('email')
+        contact.title = request.POST.get('title')
+        contact.content = request.POST.get('content')  
+        contact.save()
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))

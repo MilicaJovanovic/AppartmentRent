@@ -19,8 +19,16 @@ class Appartment(models.Model):
     description = models.CharField(max_length=1024)
     price = models.IntegerField(default=0)
     location = models.ForeignKey(Location, on_delete=models.CASCADE)
+    availableRooms = models.IntegerField(default=0)
     def __str__(self):
         return self.name
+    def checkFreeRooms(self, availableRooms):
+        if availableRooms <= self.availableRooms:
+            self.availableRooms -= availableRooms
+            return True
+        else:
+            return False
+
 
 class User(models.Model):
     name = models.CharField(max_length=256)
@@ -46,4 +54,13 @@ class Reservation(models.Model):
     starting_soon.admin_order_field = 'start_date'
     starting_soon.boolean = True
     starting_soon.short_description = 'Starting soon?'
+        
+class Contact(models.Model):
+    name = models.CharField(max_length=256, default="")
+    email = models.CharField(max_length=256, default="")
+    title = models.CharField(max_length=256, default="")
+    content = models.CharField(max_length=1024, default="")
+    def __str__(self):
+        return self.title 
+
         
