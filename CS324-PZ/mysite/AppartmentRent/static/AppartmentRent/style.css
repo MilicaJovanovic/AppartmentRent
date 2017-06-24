@@ -79,6 +79,16 @@ a {
 	border: none;
 	margin-bottom: 30px;
 }
+.reserveAppartmentBtn {
+	width: 60%;
+	margin-left: 2%;
+	height: 30px;
+	color: white;
+	background-color: #0a0f44;
+	border-radius: 5px;
+	border: none;
+	margin-bottom: 30px;
+}
 .submitReservationBtn {
 	width: 30%;
 	margin-left: 2%;
@@ -113,6 +123,23 @@ a {
 	text-decoration: none;
 	font-size: 1.2em;
 	margin-left: 3%;
+}
+.appartmentInfoDiv {
+	width: 40%;
+	float: left;
+	margin-left: 1.5%;
+}
+.appartmentImgDiv {
+	margin-top: -45;
+	width: 40%;
+	margin-left: 10%;
+	float: left;
+	height: 400px;
+}
+.appartmentImg {
+	width: 100%;
+	height: 100%;	
+	border-radius: 5px;
 }
 .destination {
 	background-color: white;
@@ -170,5 +197,8 @@ a {
 	font-size: 1.2em;
 	padding: 0px;
 	margin: 0px;
+	margin-left: 2%;
+}
+.noItems {
 	margin-left: 2%;
 }

@@ -24,10 +24,11 @@
     {% for appartment in latest_appartment_list %}
     	<div class="appartment">
     		<a href="{% url 'AppartmentRent:detail' appartment.id %}" class="appartName">{{ appartment.name }}</a>
-    		<p class="appartPlace">{{ appartment.location.place }}</p>
+    		<p class="appartPlace">{{ appartment.location.place }}, {{ appartment.location.country }}</p>
+            <p class="appartInfo"> € {{ appartment.price }} po danu/ noći</p>
     	</div>
     {% endfor %}
     </ul>
 {% else %}
-    <p>No appartments are available.</p>
+    <p class="noItems">Trenutno nema dostupnih apartmana.</p>
 {% endif %}

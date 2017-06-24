@@ -25,7 +25,7 @@
     	<div class="destination">
     		<p class="destinationTitle">{{ location.place }}, {{ location.country }}</p>
     		<div class="destinationImgDiv">
-    			<img src="{{ location.photo }}" alt="Destination photo" class="destinationImg">
+    			<img src="{{ location.photo }}" alt="Slika destinacija" class="destinationImg">
     		</div>
     		<p class="destinationDesc">{{ location.description }}</p>
     		<p class="destinationInfo">Udaljenost od Beograda: <strong>{{ location.distanceBg }}</strong></p>
@@ -35,5 +35,5 @@
     {% endfor %}
     </ul>
 {% else %}
-    <p>No appartments are available.</p>
+    <p class="noItems">Trenutno nema dostupnih destinacija.</p>
 {% endif %}

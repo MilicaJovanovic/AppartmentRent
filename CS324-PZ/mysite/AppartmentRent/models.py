@@ -20,6 +20,7 @@ class Appartment(models.Model):
     price = models.IntegerField(default=0)
     location = models.ForeignKey(Location, on_delete=models.CASCADE)
     availableRooms = models.IntegerField(default=0)
+    photo = models.CharField(max_length=1024, default="")
     def __str__(self):
         return self.name
     def checkFreeRooms(self, availableRooms):
