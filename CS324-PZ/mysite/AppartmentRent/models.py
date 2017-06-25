@@ -30,13 +30,6 @@ class Appartment(models.Model):
         else:
             return False
 
-
-class User(models.Model):
-    name = models.CharField(max_length=256)
-    surname = models.CharField(max_length=256)
-    def __str__(self):
-        return self.name 
-
 class Reservation(models.Model):
     appartment = models.ForeignKey(Appartment, on_delete=models.CASCADE)
     nameAndSurname = models.CharField(max_length=256, default="")
